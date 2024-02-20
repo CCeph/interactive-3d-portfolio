@@ -38,6 +38,13 @@ function createRotateController(
   let initialPosition = {};
   let initialRotation = {};
 
+  function isAndroid() {
+    if ((navigator.userAgent || window.opera).match(/Android/i)) {
+      return true;
+    }
+    return false;
+  }
+
   function getInitialBoxRotation() {
     const rootElement = root;
     const rootStyles = getComputedStyle(rootElement);
@@ -50,10 +57,17 @@ function createRotateController(
 
   function initDragRotate(e) {
     dragging = true;
-    initialPosition = {
-      x: e.pageX,
-      y: e.pageY,
-    };
+    if (isAndroid()) {
+      initialPosition = {
+        x: e.targetTouches[0].pageX,
+        y: e.targetTouches[0].pageY,
+      };
+    } else {
+      initialPosition = {
+        x: e.pageX,
+        y: e.pageY,
+      };
+    }
     initialRotation = getInitialBoxRotation();
   }
 
@@ -61,10 +75,19 @@ function createRotateController(
     if (!dragging) {
       return;
     }
-    const currentPosition = {
-      x: e.pageX,
-      y: e.pageY,
-    };
+    let currentPosition = {};
+
+    if (isAndroid()) {
+      currentPosition = {
+        x: e.targetTouches[0].pageX,
+        y: e.targetTouches[0].pageY,
+      };
+    } else {
+      currentPosition = {
+        x: e.pageX,
+        y: e.pageY,
+      };
+    }
     const delta = {
       x: ((currentPosition.x - initialPosition.x) / window.innerWidth) * 360,
       y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
@@ -96,10 +119,13 @@ function createRotateController(
   }
 
   container.addEventListener("mousedown", initDragRotate);
+  container.addEventListener("touchstart", initDragRotate);
 
   container.addEventListener("mousemove", dragRotate);
+  container.addEventListener("touchmove", dragRotate);
 
   container.addEventListener("mouseup", endDragRotate);
+  container.addEventListener("touchend", endDragRotate);
 
   return {
     initDragRotate,
