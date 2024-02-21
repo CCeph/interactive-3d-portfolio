@@ -181,13 +181,43 @@ function createNavListeners() {
     "contactActive",
   ];
 
-  cachedDOM.$projectsFace.addEventListener("dblclick", () => {
+  const doubleClickStates = {
+    projectsDoubleClicked: false,
+    aboutDoubleClicked: false,
+    contactDoubleClicked: false,
+    educationDoubleClicked: false,
+  };
+
+  function checkDoubleClick(event, elementDoubleClicked) {
+    if (!doubleClickStates[elementDoubleClicked]) {
+      doubleClickStates[elementDoubleClicked] = true;
+      setTimeout(() => {
+        doubleClickStates[elementDoubleClicked] = false;
+      }, 300);
+      return false;
+    }
+    event.preventDefault();
+    return true;
+  }
+
+  cachedDOM.$projectsFace.addEventListener("click", (event) => {
+    const doubleClicked = checkDoubleClick(event, "projectsDoubleClicked");
+    if (doubleClicked) {
+      removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+      cachedDOM.$box.classList.add("projectsActive");
+      cachedDOM.$projectsGroup.classList.add("open");
+      hideNavMessage();
+      showProjectsPage();
+    }
+  });
+
+  /* cachedDOM.$projectsFace.addEventListener("dblclick", () => {
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
     cachedDOM.$box.classList.add("projectsActive");
     cachedDOM.$projectsGroup.classList.add("open");
     hideNavMessage();
     showProjectsPage();
-  });
+  }); */
 
   cachedDOM.$projectsFace.addEventListener("dblclick", () => {
     console.log("Projects");
