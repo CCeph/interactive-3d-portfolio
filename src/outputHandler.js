@@ -210,6 +210,11 @@ function createNavListeners() {
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("projectsActive");
+      cachedDOM.$projectsGroup.classList.remove("closed");
+      cachedDOM.$box.scrollBy(
+        0,
+        0
+      ); /* Triggers reflow to allow animation restart */
       cachedDOM.$projectsGroup.classList.add("open");
       hideNavMessage();
       showProjectsPage();
@@ -224,9 +229,13 @@ function createNavListeners() {
       0
     ); /* Triggers reflow to allow animation restart */
     cachedDOM.$box.classList.add("closed");
-    /* cachedDOM.$projectsGroup.classList.remove("open");
+    cachedDOM.$projectsGroup.classList.remove("open");
+    cachedDOM.$box.scrollBy(
+      0,
+      0
+    ); /* Triggers reflow to allow animation restart */
     cachedDOM.$projectsGroup.classList.add("closed");
-    showNavMessage(); */
+    showNavMessage();
   });
 
   /* cachedDOM.$projectsFace.addEventListener("dblclick", () => {

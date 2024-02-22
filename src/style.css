@@ -237,7 +237,8 @@ textarea {
   }
 
   100% {
-    transform: rotate(0deg) translateZ(0px);
+    transform: rotate(0deg) translateZ(0px) rotateX(var(--initialRotateX))
+      rotateY(var(--initialRotateY));
   }
 }
 
@@ -289,6 +290,9 @@ textarea {
 }
 .frontFace.open {
   animation: slideOpen 1s ease-in-out var(--rotateDuration) 1 normal forwards;
+}
+.frontFace.closed {
+  animation: slideOpen 1s ease-in-out 2s 1 reverse backwards;
 }
 
 .box .rightFace {
