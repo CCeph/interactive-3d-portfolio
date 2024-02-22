@@ -6,6 +6,7 @@
 
 body {
   margin: 0;
+  background-color: #0c0d13;
 }
 
 button,
@@ -28,7 +29,7 @@ textarea {
   --openingDuration: 1s;
   --zoomDuration: 1s;
   --textColor: white;
-  --themeColor: black;
+  --themeColor: #0c0d13;
   --foregroundColor: rgba(0, 0, 0, 0);
   --introSubtitleLength: 355px;
   --introMessageTypingHoldTime: 2s;
@@ -52,7 +53,6 @@ textarea {
   justify-content: center;
   text-align: center;
   width: var(--introSubtitleLength);
-  background-color: var(--themeColor);
   color: var(--textColor);
   font-family: var(--titleFont);
   top: 50%;
@@ -118,7 +118,6 @@ textarea {
   top: 10%;
   justify-content: center;
   text-align: center;
-  background-color: var(--themeColor);
   color: var(--textColor);
   font-family: var(--titleFont);
   left: 50%;
@@ -176,7 +175,7 @@ textarea {
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: var(--themeColor);
+  background-color: transparent;
   margin: auto;
   perspective: 600px;
   overflow: hidden;
