@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DM+Sans:opsz,wght@9..40,200&family=Raleway:wght@300;400&display=swap");
+
 /* Defaults */
 
 * {
@@ -7,6 +9,7 @@
 body {
   margin: 0;
   background-color: #0c0d13;
+  font-family: "Raleway", sans-serif;
 }
 
 button,
@@ -29,6 +32,13 @@ textarea {
   --openingDuration: 1s;
   --zoomDuration: 1s;
   --textColor: white;
+
+  --primary-font-color: white;
+  --secondary-font-color: rgb(209, 49, 49);
+  --language-icon-size: 100px;
+  --page-max-width: 1500px;
+  --default-outside-padding: 15px 30px 15px;
+
   --themeColor: #0c0d13;
   --foregroundColor: rgba(0, 0, 0, 0);
   --introSubtitleLength: 355px;
@@ -44,6 +54,8 @@ textarea {
   );
   --introNavHoldTime: calc(var(--introBoxHoldTime) + 2s);
   --titleFont: Arial, Helvetica, sans-serif;
+  --clickedButtonShadow: inset 0px 0px 3px grey;
+  --clickedRedButtonShadow: inset 10px 0px 20px rgb(51, 0, 0);
 }
 
 /* Start of intro message styling */
@@ -312,6 +324,7 @@ textarea {
 
 .page {
   height: 100vh;
+  width: 100vw;
   background-color: var(--themeColor);
   color: white;
   padding: 10px;
@@ -353,4 +366,84 @@ textarea {
     scale: 0;
   }
 }
+
+.projects {
+  color: white;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.projects > h1 {
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+.projects .flex-wrapper {
+  display: flex;
+}
+
+.projects .flex-wrapper > .description {
+  flex: 1;
+  padding: var(--default-outside-padding);
+}
+
+.projects .flex-wrapper > img {
+  flex: 2.5;
+  min-width: 0;
+  object-fit: cover;
+  margin: var(--default-outside-padding);
+  border-radius: 10px;
+}
+
+.projects .description button {
+  display: block;
+  border: 1px solid var(--secondary-font-color);
+  color: var(--secondary-font-color);
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  scale: 1;
+  transition: scale ease-in-out 0.5s;
+}
+
+.projects .description button:hover {
+  scale: 1.1;
+  transition: scale ease-in-out 0.5s;
+}
+
+.projects a {
+  text-decoration: none;
+}
+
+button:active {
+  box-shadow: var(--clickedRedButtonShadow);
+}
+
+@media (max-width: 800px) {
+  .about-me .flex-wrapper,
+  .projects .flex-wrapper {
+    flex-direction: column;
+  }
+
+  .projects h2 {
+    text-align: center;
+  }
+
+  .projects .flex-wrapper img {
+    order: 1;
+  }
+
+  .projects .flex-wrapper .description {
+    order: 2;
+  }
+
+  .projects .description button {
+    margin: 10px auto;
+  }
+}
+
 /* End of Projects page styling */
