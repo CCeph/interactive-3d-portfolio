@@ -395,7 +395,7 @@ textarea {
   border-radius: 10px;
 }
 
-.projects .description button {
+.projects /* .description */ button {
   display: block;
   border: 1px solid var(--secondary-font-color);
   color: var(--secondary-font-color);
@@ -410,7 +410,7 @@ textarea {
   transition: scale ease-in-out 0.5s;
 }
 
-.projects .description button:hover {
+.projects /* .description */ button:hover {
   scale: 1.1;
   transition: scale ease-in-out 0.5s;
 }
@@ -444,6 +444,10 @@ button:active {
   .projects .description button {
     margin: 10px auto;
   }
+}
+
+.page .home-button {
+  margin: auto;
 }
 
 /* End of Projects page styling */
