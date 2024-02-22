@@ -312,10 +312,15 @@ textarea {
 
 .page {
   height: 100vh;
-  background-color: black;
+  background-color: var(--themeColor);
   color: white;
   padding: 10px;
   overflow-y: auto;
+}
+
+.page .content {
+  position: relative;
+  z-index: 10;
 }
 
 .header {
