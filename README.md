@@ -16,6 +16,7 @@ This website couples as my portfolio and my attempt at a new style of navigation
 2. Hide nav text when a page is opened.
 3. Fix bug where if the box is not moved before opening a page, it does not animate correctly.
 4. Disable moving box during page intro and when inside other pages.
+5. Make checkDoubleClick into an object so it can be copied easily in the future.
 
 ## Compatibility
 
