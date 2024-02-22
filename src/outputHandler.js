@@ -10,6 +10,7 @@ function createDOMCache() {
   const $contactFace = document.querySelector("[data-contact-face]");
   const $navMessage = document.querySelector("[data-nav-message]");
   const $projectsPage = document.querySelector("[data-projects-page]");
+  const $homeButton = document.querySelector("[data-home-button]");
   return {
     $container,
     $box,
@@ -22,6 +23,7 @@ function createDOMCache() {
     $contactFace,
     $navMessage,
     $projectsPage,
+    $homeButton,
   };
 }
 
@@ -158,12 +160,14 @@ function hideNavMessage() {
 function showProjectsPage() {
   const { $projectsPage } = cachedDOM;
   $projectsPage.classList.remove("hide");
+  $projectsPage.scrollBy(0, 0); /* Triggers reflow to allow animation restart */
   $projectsPage.classList.add("active");
 }
 
 function hideProjectsPage() {
   const { $projectsPage } = cachedDOM;
   $projectsPage.classList.remove("active");
+  $projectsPage.scrollBy(0, 0); /* Triggers reflow to allow animation restart */
   $projectsPage.classList.add("hide");
 }
 
@@ -179,6 +183,7 @@ function createNavListeners() {
     "educationActive",
     "aboutActive",
     "contactActive",
+    "closed",
   ];
 
   const doubleClickStates = {
@@ -209,6 +214,19 @@ function createNavListeners() {
       hideNavMessage();
       showProjectsPage();
     }
+  });
+
+  cachedDOM.$homeButton.addEventListener("click", () => {
+    hideProjectsPage();
+    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+    cachedDOM.$box.scrollBy(
+      0,
+      0
+    ); /* Triggers reflow to allow animation restart */
+    cachedDOM.$box.classList.add("closed");
+    /* cachedDOM.$projectsGroup.classList.remove("open");
+    cachedDOM.$projectsGroup.classList.add("closed");
+    showNavMessage(); */
   });
 
   /* cachedDOM.$projectsFace.addEventListener("dblclick", () => {
