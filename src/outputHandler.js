@@ -235,7 +235,7 @@ function createNavListeners() {
     showNavMessage();
   });
 
-  /* cachedDOM.$aboutFace.addEventListener("click", (event) => {
+  cachedDOM.$aboutFace.addEventListener("click", (event) => {
     const doubleClicked = checkDoubleClick(event, "aboutDoubleClicked");
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
@@ -244,12 +244,8 @@ function createNavListeners() {
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$aboutGroup.classList.add("open");
       hideNavMessage();
-      showProjectsPage();
+      // showAboutPage();
     }
-  }); */
-
-  cachedDOM.$aboutFace.addEventListener("dblclick", () => {
-    console.log("About");
   });
 
   cachedDOM.$contactFace.addEventListener("dblclick", () => {

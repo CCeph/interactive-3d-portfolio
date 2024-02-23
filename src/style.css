@@ -231,6 +231,58 @@ textarea {
   }
 }
 
+@keyframes rotateToEducation {
+  0% {
+  }
+
+  34% {
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+
+  67% {
+    transform: rotate(0deg) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateZ(180deg) translateZ(500px);
+  }
+}
+
+@keyframes rotateToAbout {
+  0% {
+  }
+
+  34% {
+    transform: rotateX(0deg) rotateY(180deg);
+  }
+
+  67% {
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(180deg) rotateZ(180deg)
+      translateZ(-500px);
+  }
+}
+
+@keyframes rotateToContact {
+  0% {
+  }
+
+  34% {
+    transform: rotateX(270deg) rotateY(0deg);
+  }
+
+  67% {
+    transform: rotate(0deg) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateZ(180deg) translateZ(500px);
+  }
+}
+
 @keyframes closeBox {
   0% {
     transform: rotateZ(180deg) translateZ(500px);
@@ -244,6 +296,12 @@ textarea {
 
 .box.projectsActive {
   animation: rotateToFace
+    calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
+    ease-in-out 0s 1 normal forwards;
+}
+
+.box.aboutActive {
+  animation: rotateToAbout
     calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
     ease-in-out 0s 1 normal forwards;
 }
