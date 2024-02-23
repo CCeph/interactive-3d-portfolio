@@ -15,12 +15,18 @@ function createDOMCache() {
   const $navMessage = document.querySelector("[data-nav-message]");
   const $projectsPage = document.querySelector("[data-projects-page]");
   const $aboutPage = document.querySelector("[data-about-page]");
-  const $educationPage = document.querySelector("[data-educationpage]");
+  const $educationPage = document.querySelector("[data-education-page]");
   const $contactPage = document.querySelector("[data-contact-page]");
   const $projectsHomeButton = document.querySelector(
     "[data-projects-home-button]"
   );
+  const $educationHomeButton = document.querySelector(
+    "[data-education-home-button]"
+  );
   const $aboutHomeButton = document.querySelector("[data-about-home-button]");
+  const $contactHomeButton = document.querySelector(
+    "[data-contact-home-button]"
+  );
   return {
     $container,
     $box,
@@ -39,7 +45,9 @@ function createDOMCache() {
     $educationPage,
     $contactPage,
     $projectsHomeButton,
+    $educationHomeButton,
     $aboutHomeButton,
+    $contactHomeButton,
   };
 }
 
@@ -201,6 +209,20 @@ function hideAboutPage() {
   $aboutPage.classList.add("hide");
 }
 
+function showEducationPage() {
+  const { $educationPage } = cachedDOM;
+  $educationPage.classList.remove("hide");
+  triggerReflowOnElement($educationPage);
+  $educationPage.classList.add("active");
+}
+
+function hideEducationPage() {
+  const { $educationPage } = cachedDOM;
+  $educationPage.classList.remove("active");
+  triggerReflowOnElement($educationPage);
+  $educationPage.classList.add("hide");
+}
+
 function removeClassesFromElement(classNameArray, element) {
   classNameArray.forEach((className) => {
     element.classList.remove(className);
@@ -268,9 +290,18 @@ function createNavListeners() {
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$educationGroup.classList.add("open");
       hideNavMessage();
-
-      // showEducationPage();
+      showEducationPage();
     }
+  });
+  cachedDOM.$educationHomeButton.addEventListener("click", () => {
+    hideEducationPage();
+    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$box.classList.add("closed");
+    cachedDOM.$educationGroup.classList.remove("open");
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$educationGroup.classList.add("closed");
+    showNavMessage();
   });
 
   cachedDOM.$aboutFace.addEventListener("click", (event) => {
