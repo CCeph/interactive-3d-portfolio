@@ -554,7 +554,7 @@ textarea {
   border-radius: 10px;
 }
 
-.projects /* .description */ button {
+.page button {
   display: block;
   border: 1px solid var(--secondary-font-color);
   color: var(--secondary-font-color);
@@ -569,7 +569,7 @@ textarea {
   transition: scale ease-in-out 0.5s;
 }
 
-.projects /* .description */ button:hover {
+.page button:hover {
   scale: 1.1;
   transition: scale ease-in-out 0.5s;
 }
@@ -603,6 +603,54 @@ button:active {
   .projects .description button {
     margin: 10px auto;
   }
+}
+
+.about-me {
+  color: white;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.about-me > h1 {
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+.about-me > .flex-wrapper {
+  display: flex;
+}
+
+.about-me .flex-wrapper > * {
+  flex: 1;
+  padding: var(--default-outside-padding);
+}
+
+.about-me .flex-wrapper > p {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.flex-wrapper .language-images {
+  display: grid;
+  grid-template-columns: var(--language-icon-size) var(--language-icon-size) var(
+      --language-icon-size
+    );
+  gap: 10px;
+  justify-content: center;
+}
+
+.language-images i {
+  font-size: var(--language-icon-size);
+}
+
+.language-images .icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-wrapper > :nth-child(1) {
+  padding-bottom: 10px;
 }
 
 .page .home-button {
