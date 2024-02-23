@@ -17,7 +17,10 @@ function createDOMCache() {
   const $aboutPage = document.querySelector("[data-about-page]");
   const $educationPage = document.querySelector("[data-educationpage]");
   const $contactPage = document.querySelector("[data-contact-page]");
-  const $homeButton = document.querySelector("[data-home-button]");
+  const $projectsHomeButton = document.querySelector(
+    "[data-projects-home-button]"
+  );
+  const $aboutHomeButton = document.querySelector("[data-about-home-button]");
   return {
     $container,
     $box,
@@ -35,7 +38,8 @@ function createDOMCache() {
     $aboutPage,
     $educationPage,
     $contactPage,
-    $homeButton,
+    $projectsHomeButton,
+    $aboutHomeButton,
   };
 }
 
@@ -244,7 +248,7 @@ function createNavListeners() {
     }
   });
 
-  cachedDOM.$homeButton.addEventListener("click", () => {
+  cachedDOM.$projectsHomeButton.addEventListener("click", () => {
     hideProjectsPage();
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
     triggerReflowOnElement(cachedDOM.$box);
@@ -280,6 +284,16 @@ function createNavListeners() {
       hideNavMessage();
       showAboutPage();
     }
+  });
+  cachedDOM.$aboutHomeButton.addEventListener("click", () => {
+    hideAboutPage();
+    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$box.classList.add("closed");
+    cachedDOM.$aboutGroup.classList.remove("open");
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$aboutGroup.classList.add("closed");
+    showNavMessage();
   });
 
   cachedDOM.$contactFace.addEventListener("click", (event) => {
