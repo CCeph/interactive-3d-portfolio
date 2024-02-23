@@ -257,8 +257,8 @@ function createNavListeners() {
       cachedDOM.$aboutGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$aboutGroup.classList.add("open");
-
       hideNavMessage();
+
       // showAboutPage();
     }
   });
@@ -271,8 +271,8 @@ function createNavListeners() {
       cachedDOM.$contactGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$contactGroup.classList.add("open");
-
       hideNavMessage();
+
       // showContactPage();
     }
   });
