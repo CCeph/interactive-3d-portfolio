@@ -252,6 +252,12 @@ function createNavListeners() {
     "closed",
   ];
 
+  function setBoxRotateValuesTo(x, y) {
+    const rootElement = cachedDOM.$root;
+    rootElement.style.setProperty("--initialRotateX", `${x}deg`);
+    rootElement.style.setProperty("--initialRotateY", `${y}deg`);
+  }
+
   const doubleClickStates = {
     projectsDoubleClicked: false,
     aboutDoubleClicked: false,
@@ -293,6 +299,7 @@ function createNavListeners() {
     triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$projectsGroup.classList.add("closed");
     showNavMessage();
+    setBoxRotateValuesTo(0, 0);
   });
 
   cachedDOM.$educationFace.addEventListener("click", (event) => {
@@ -316,6 +323,7 @@ function createNavListeners() {
     triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$educationGroup.classList.add("closed");
     showNavMessage();
+    setBoxRotateValuesTo(0, -90);
   });
 
   cachedDOM.$aboutFace.addEventListener("click", (event) => {
@@ -339,6 +347,7 @@ function createNavListeners() {
     triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$aboutGroup.classList.add("closed");
     showNavMessage();
+    setBoxRotateValuesTo(0, -180);
   });
 
   cachedDOM.$contactFace.addEventListener("click", (event) => {
@@ -362,6 +371,7 @@ function createNavListeners() {
     triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$contactGroup.classList.add("closed");
     showNavMessage();
+    setBoxRotateValuesTo(0, 90);
   });
 
   cachedDOM.$box.addEventListener(
