@@ -370,12 +370,42 @@ textarea {
   transform: translateZ(-1px);
 }
 
+@keyframes slideEducationOpen {
+  0% {
+    transform: rotateY(90deg) translateY(-100px) translateX(-100px)
+      translateZ(100px);
+  }
+
+  50% {
+    transform: rotateY(90deg) translateY(-100px) translateX(-100px)
+      translateZ(100px) translateY(50px);
+  }
+
+  100% {
+    transform: rotateY(90deg) translateY(-100px) translateX(-100px)
+      translateZ(100px) translateY(100vh);
+  }
+}
+.rightFace.open {
+  animation: slideEducationOpen 1s ease-in-out var(--rotateDuration) 1 normal
+    forwards;
+}
+.rightFace.closed {
+  animation: slideEducationOpen 1s ease-in-out 2s 1 reverse backwards;
+}
+
 .box .backFace {
   transform: rotateY(180deg) var(--defaultBoxTranslations);
   transform-style: preserve-3d;
 }
 .box .backRear {
   transform: translateZ(-1px);
+}
+.backFace.open {
+  animation: slideOpen 1s ease-in-out var(--rotateDuration) 1 normal forwards;
+}
+.backFace.closed {
+  animation: slideOpen 1s ease-in-out 2s 1 reverse backwards;
 }
 
 .box .leftFace {
@@ -384,6 +414,12 @@ textarea {
 }
 .box .leftRear {
   transform: translateZ(-1px);
+}
+.leftFace.open {
+  animation: slideOpen 1s ease-in-out var(--rotateDuration) 1 normal forwards;
+}
+.leftFace.closed {
+  animation: slideOpen 1s ease-in-out 2s 1 reverse backwards;
 }
 
 .box .topFace {

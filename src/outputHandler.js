@@ -240,10 +240,10 @@ function createNavListeners() {
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("educationActive");
-
       cachedDOM.$educationGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$educationGroup.classList.add("open");
+
       hideNavMessage();
       // showEducationPage();
     }
@@ -254,10 +254,10 @@ function createNavListeners() {
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("aboutActive");
-
       cachedDOM.$aboutGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$aboutGroup.classList.add("open");
+
       hideNavMessage();
       // showAboutPage();
     }
@@ -268,10 +268,10 @@ function createNavListeners() {
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("contactActive");
-
       cachedDOM.$contactGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$contactGroup.classList.add("open");
+
       hideNavMessage();
       // showContactPage();
     }
