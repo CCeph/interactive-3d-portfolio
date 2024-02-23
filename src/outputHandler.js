@@ -235,11 +235,26 @@ function createNavListeners() {
     showNavMessage();
   });
 
+  cachedDOM.$educationFace.addEventListener("click", (event) => {
+    const doubleClicked = checkDoubleClick(event, "educationDoubleClicked");
+    if (doubleClicked) {
+      removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+      cachedDOM.$box.classList.add("educationActive");
+
+      cachedDOM.$educationGroup.classList.remove("closed");
+      triggerReflowOnElement(cachedDOM.$box);
+      cachedDOM.$educationGroup.classList.add("open");
+      hideNavMessage();
+      // showEducationPage();
+    }
+  });
+
   cachedDOM.$aboutFace.addEventListener("click", (event) => {
     const doubleClicked = checkDoubleClick(event, "aboutDoubleClicked");
     if (doubleClicked) {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("aboutActive");
+
       cachedDOM.$aboutGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$aboutGroup.classList.add("open");
@@ -248,8 +263,18 @@ function createNavListeners() {
     }
   });
 
-  cachedDOM.$contactFace.addEventListener("dblclick", () => {
-    console.log("Contact");
+  cachedDOM.$contactFace.addEventListener("click", (event) => {
+    const doubleClicked = checkDoubleClick(event, "contactDoubleClicked");
+    if (doubleClicked) {
+      removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+      cachedDOM.$box.classList.add("contactActive");
+
+      cachedDOM.$contactGroup.classList.remove("closed");
+      triggerReflowOnElement(cachedDOM.$box);
+      cachedDOM.$contactGroup.classList.add("open");
+      hideNavMessage();
+      // showContactPage();
+    }
   });
 
   cachedDOM.$box.addEventListener(
