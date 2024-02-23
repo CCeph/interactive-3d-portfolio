@@ -243,8 +243,8 @@ function createNavListeners() {
       cachedDOM.$educationGroup.classList.remove("closed");
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$educationGroup.classList.add("open");
-
       hideNavMessage();
+
       // showEducationPage();
     }
   });
