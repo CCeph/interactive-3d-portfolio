@@ -195,6 +195,20 @@ function hideProjectsPage() {
   $projectsPage.classList.add("hide");
 }
 
+function showEducationPage() {
+  const { $educationPage } = cachedDOM;
+  $educationPage.classList.remove("hide");
+  triggerReflowOnElement($educationPage);
+  $educationPage.classList.add("active");
+}
+
+function hideEducationPage() {
+  const { $educationPage } = cachedDOM;
+  $educationPage.classList.remove("active");
+  triggerReflowOnElement($educationPage);
+  $educationPage.classList.add("hide");
+}
+
 function showAboutPage() {
   const { $aboutPage } = cachedDOM;
   $aboutPage.classList.remove("hide");
@@ -209,18 +223,18 @@ function hideAboutPage() {
   $aboutPage.classList.add("hide");
 }
 
-function showEducationPage() {
-  const { $educationPage } = cachedDOM;
-  $educationPage.classList.remove("hide");
-  triggerReflowOnElement($educationPage);
-  $educationPage.classList.add("active");
+function showContactPage() {
+  const { $contactPage } = cachedDOM;
+  $contactPage.classList.remove("hide");
+  triggerReflowOnElement($contactPage);
+  $contactPage.classList.add("active");
 }
 
-function hideEducationPage() {
-  const { $educationPage } = cachedDOM;
-  $educationPage.classList.remove("active");
-  triggerReflowOnElement($educationPage);
-  $educationPage.classList.add("hide");
+function hideContactPage() {
+  const { $contactPage } = cachedDOM;
+  $contactPage.classList.remove("active");
+  triggerReflowOnElement($contactPage);
+  $contactPage.classList.add("hide");
 }
 
 function removeClassesFromElement(classNameArray, element) {
@@ -336,9 +350,18 @@ function createNavListeners() {
       triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$contactGroup.classList.add("open");
       hideNavMessage();
-
-      // showContactPage();
+      showContactPage();
     }
+  });
+  cachedDOM.$contactHomeButton.addEventListener("click", () => {
+    hideContactPage();
+    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$box.classList.add("closed");
+    cachedDOM.$contactGroup.classList.remove("open");
+    triggerReflowOnElement(cachedDOM.$box);
+    cachedDOM.$contactGroup.classList.add("closed");
+    showNavMessage();
   });
 
   cachedDOM.$box.addEventListener(
