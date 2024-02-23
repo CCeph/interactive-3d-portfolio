@@ -236,15 +236,15 @@ textarea {
   }
 
   34% {
-    transform: rotateX(90deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(-90deg);
   }
 
   67% {
-    transform: rotate(0deg) translateZ(0px);
+    transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg) translateZ(0px);
   }
 
   100% {
-    transform: rotateZ(180deg) translateZ(500px);
+    transform: rotateY(-90deg) rotateZ(0deg) rotateX(180deg) translateX(500px);
   }
 }
 
@@ -261,8 +261,7 @@ textarea {
   }
 
   100% {
-    transform: rotateX(0deg) rotateY(180deg) rotateZ(180deg) rotateZ(180deg)
-      translateZ(-500px);
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(180deg) translateZ(-500px);
   }
 }
 
@@ -271,15 +270,15 @@ textarea {
   }
 
   34% {
-    transform: rotateX(270deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(90deg);
   }
 
   67% {
-    transform: rotate(0deg) translateZ(0px);
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg) translateZ(0px);
   }
 
   100% {
-    transform: rotateZ(180deg) translateZ(500px);
+    transform: rotateY(90deg) rotateZ(0deg) rotateX(180deg) translateX(-500px);
   }
 }
 
@@ -294,14 +293,24 @@ textarea {
   }
 }
 
+/* Applies animations on box to rotate to each face and zoom in when double clicked */
 .box.projectsActive {
   animation: rotateToFace
     calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
     ease-in-out 0s 1 normal forwards;
 }
-
+.box.educationActive {
+  animation: rotateToEducation
+    calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
+    ease-in-out 0s 1 normal forwards;
+}
 .box.aboutActive {
   animation: rotateToAbout
+    calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
+    ease-in-out 0s 1 normal forwards;
+}
+.box.contactActive {
+  animation: rotateToContact
     calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
     ease-in-out 0s 1 normal forwards;
 }
