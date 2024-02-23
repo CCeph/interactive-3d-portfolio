@@ -495,20 +495,20 @@ textarea {
   z-index: 10;
 }
 
-.projects-page {
+.page {
   position: absolute;
   top: 0;
   opacity: 0;
   pointer-events: none;
 }
 
-.projects-page.active {
+.page.active {
   opacity: 1;
   pointer-events: all;
   animation: fadeOut 1s ease-in 2.5s 1 reverse backwards;
 }
 
-.projects-page.hide {
+.page.hide {
   opacity: 1;
   pointer-events: none;
   animation: fadeOut 1s ease-in 1s 1 normal forwards;
