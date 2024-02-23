@@ -238,18 +238,6 @@ function createNavListeners() {
     showNavMessage();
   });
 
-  /* cachedDOM.$projectsFace.addEventListener("dblclick", () => {
-    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
-    cachedDOM.$box.classList.add("projectsActive");
-    cachedDOM.$projectsGroup.classList.add("open");
-    hideNavMessage();
-    showProjectsPage();
-  }); */
-
-  cachedDOM.$projectsFace.addEventListener("dblclick", () => {
-    console.log("Projects");
-  });
-
   cachedDOM.$aboutFace.addEventListener("dblclick", () => {
     console.log("About");
   });
