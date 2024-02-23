@@ -1,3 +1,5 @@
+import triggerReflowOnElement from "./commonUtils";
+
 function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
@@ -160,14 +162,14 @@ function hideNavMessage() {
 function showProjectsPage() {
   const { $projectsPage } = cachedDOM;
   $projectsPage.classList.remove("hide");
-  $projectsPage.scrollBy(0, 0); /* Triggers reflow to allow animation restart */
+  triggerReflowOnElement($projectsPage);
   $projectsPage.classList.add("active");
 }
 
 function hideProjectsPage() {
   const { $projectsPage } = cachedDOM;
   $projectsPage.classList.remove("active");
-  $projectsPage.scrollBy(0, 0); /* Triggers reflow to allow animation restart */
+  triggerReflowOnElement($projectsPage);
   $projectsPage.classList.add("hide");
 }
 
@@ -211,10 +213,7 @@ function createNavListeners() {
       removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
       cachedDOM.$box.classList.add("projectsActive");
       cachedDOM.$projectsGroup.classList.remove("closed");
-      cachedDOM.$box.scrollBy(
-        0,
-        0
-      ); /* Triggers reflow to allow animation restart */
+      triggerReflowOnElement(cachedDOM.$box);
       cachedDOM.$projectsGroup.classList.add("open");
       hideNavMessage();
       showProjectsPage();
@@ -224,16 +223,10 @@ function createNavListeners() {
   cachedDOM.$homeButton.addEventListener("click", () => {
     hideProjectsPage();
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
-    cachedDOM.$box.scrollBy(
-      0,
-      0
-    ); /* Triggers reflow to allow animation restart */
+    triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$box.classList.add("closed");
     cachedDOM.$projectsGroup.classList.remove("open");
-    cachedDOM.$box.scrollBy(
-      0,
-      0
-    ); /* Triggers reflow to allow animation restart */
+    triggerReflowOnElement(cachedDOM.$box);
     cachedDOM.$projectsGroup.classList.add("closed");
     showNavMessage();
   });
