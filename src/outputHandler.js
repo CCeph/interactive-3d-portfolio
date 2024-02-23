@@ -9,7 +9,9 @@ function createDOMCache() {
   const $projectsFace = document.querySelector("[data-projects-face]");
   const $projectsGroup = document.querySelector("[data-projects-group]");
   const $aboutFace = document.querySelector("[data-about-face]");
+  const $aboutGroup = document.querySelector("[data-about-group]");
   const $contactFace = document.querySelector("[data-contact-face]");
+  const $contactGroup = document.querySelector("[data-contact-group]");
   const $navMessage = document.querySelector("[data-nav-message]");
   const $projectsPage = document.querySelector("[data-projects-page]");
   const $homeButton = document.querySelector("[data-home-button]");
@@ -22,7 +24,9 @@ function createDOMCache() {
     $projectsFace,
     $projectsGroup,
     $aboutFace,
+    $aboutGroup,
     $contactFace,
+    $contactGroup,
     $navMessage,
     $projectsPage,
     $homeButton,
@@ -230,6 +234,19 @@ function createNavListeners() {
     cachedDOM.$projectsGroup.classList.add("closed");
     showNavMessage();
   });
+
+  /* cachedDOM.$aboutFace.addEventListener("click", (event) => {
+    const doubleClicked = checkDoubleClick(event, "aboutDoubleClicked");
+    if (doubleClicked) {
+      removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+      cachedDOM.$box.classList.add("aboutActive");
+      cachedDOM.$aboutGroup.classList.remove("closed");
+      triggerReflowOnElement(cachedDOM.$box);
+      cachedDOM.$aboutGroup.classList.add("open");
+      hideNavMessage();
+      showProjectsPage();
+    }
+  }); */
 
   cachedDOM.$aboutFace.addEventListener("dblclick", () => {
     console.log("About");
