@@ -657,4 +657,9 @@ button:active {
   margin: auto;
 }
 
+.contact > .flex-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 /* End of Projects page styling */
