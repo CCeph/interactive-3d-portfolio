@@ -584,19 +584,23 @@ button:active {
 
 @media (max-width: 800px) {
   .about-me .flex-wrapper,
-  .projects .flex-wrapper {
+  .projects .flex-wrapper,
+  .education .flex-wrapper {
     flex-direction: column;
   }
 
-  .projects h2 {
+  .projects h2,
+  .education h2 {
     text-align: center;
   }
 
-  .projects .flex-wrapper img {
+  .projects .flex-wrapper img,
+  .education .flex-wrapper img {
     order: 1;
   }
 
-  .projects .flex-wrapper .description {
+  .projects .flex-wrapper .description,
+  .education .flex-wrapper .description {
     order: 2;
   }
 
@@ -660,6 +664,23 @@ button:active {
 .contact > .flex-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.education .flex-wrapper {
+  display: flex;
+}
+
+.education .flex-wrapper > .description {
+  flex: 1;
+  padding: var(--default-outside-padding);
+}
+
+.education .flex-wrapper > img {
+  flex: 2.5;
+  min-width: 0;
+  object-fit: cover;
+  margin: var(--default-outside-padding);
+  border-radius: 10px;
 }
 
 /* End of Projects page styling */
