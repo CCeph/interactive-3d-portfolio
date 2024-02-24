@@ -37,7 +37,7 @@ textarea {
   --secondary-font-color: rgb(209, 49, 49);
   --language-icon-size: 100px;
   --page-max-width: 1500px;
-  --default-outside-padding: 15px 30px 15px;
+  --default-outside-padding: 30px 30px 30px;
 
   --themeColor: #0c0d13;
   --foregroundColor: rgba(0, 0, 0, 0);
@@ -658,7 +658,7 @@ button:active {
 }
 
 .page .home-button {
-  margin: auto;
+  margin: 30px auto;
 }
 
 .contact > .flex-wrapper {
