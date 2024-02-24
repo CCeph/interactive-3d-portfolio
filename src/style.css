@@ -666,6 +666,11 @@ button:active {
   justify-content: center;
 }
 
+.contact .flex-wrapper > p {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
 .education .flex-wrapper {
   display: flex;
 }
@@ -673,12 +678,14 @@ button:active {
 .education .flex-wrapper > .description {
   flex: 1;
   padding: var(--default-outside-padding);
+  font-size: 1.3rem;
+  line-height: 1.6rem;
 }
 
 .education .flex-wrapper > img {
-  flex: 2.5;
+  flex: 1;
   min-width: 0;
-  object-fit: cover;
+  object-fit: contain;
   margin: var(--default-outside-padding);
   border-radius: 10px;
 }
