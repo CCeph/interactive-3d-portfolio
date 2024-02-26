@@ -1,7 +1,5 @@
 import triggerReflowOnElement from "./commonUtils";
 
-alert("Alerts will go here");
-
 function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
@@ -88,7 +86,6 @@ function createRotateController(
         y: e.pageY,
       };
     } catch (error) {
-      alert("Mouse API error");
       initialMousePosition = {
         x: null,
         y: null,
@@ -101,7 +98,6 @@ function createRotateController(
         y: e.targetTouches[0].pageY,
       };
     } catch (error) {
-      alert("Mobile API error");
       initialMobilePosition = {
         x: null,
         y: null,
@@ -114,7 +110,6 @@ function createRotateController(
         y: e.touches[0].pageY,
       };
     } catch (error) {
-      alert("Mobile Backup API error");
       initialMobileBackupPosition = {
         x: null,
         y: null,
