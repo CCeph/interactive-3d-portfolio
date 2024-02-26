@@ -64,6 +64,7 @@ function createRotateController(
   let initialPosition = {};
   let initialMousePosition = {};
   let initialMobilePosition = {};
+  let initialMobileBackupPosition = {};
   let initialRotation = {};
 
   function getInitialBoxRotation() {
@@ -103,6 +104,18 @@ function createRotateController(
       };
     }
 
+    try {
+      initialMobileBackupPosition = {
+        x: e.touches[0].pageX,
+        y: e.touches[0].pageY,
+      };
+    } catch (error) {
+      initialMobileBackupPosition = {
+        x: null,
+        y: null,
+      };
+    }
+
     initialRotation = getInitialBoxRotation();
   }
 
@@ -113,6 +126,7 @@ function createRotateController(
     let currentPosition = {};
     let currentMousePosition = {};
     let currentMobilePosition = {};
+    let currentMobileBackupPosition = {};
 
     try {
       currentMousePosition = {
@@ -138,17 +152,43 @@ function createRotateController(
       };
     }
 
+    try {
+      currentMobileBackupPosition = {
+        x: e.touches[0].pageX,
+        y: e.touches[0].pageY,
+      };
+    } catch (error) {
+      currentMobileBackupPosition = {
+        x: null,
+        y: null,
+      };
+    }
+
     // Checks if mobile or mouse input is being used, then sets the data accordingly.
     if (
       !(
         currentMobilePosition.x === null ||
         currentMobilePosition.y === null ||
         initialMobilePosition.x === null ||
-        initialMobilePosition.y === null
+        initialMobilePosition.y === null ||
+        currentMobilePosition.x - initialMobilePosition === 0 ||
+        currentMobilePosition.y - initialMobilePosition.y === 0
       )
     ) {
       currentPosition = currentMobilePosition;
       initialPosition = initialMobilePosition;
+    } else if (
+      !(
+        currentMobileBackupPosition.x === null ||
+        currentMobileBackupPosition.y === null ||
+        initialMobileBackupPosition.x === null ||
+        initialMobileBackupPosition.y === null ||
+        currentMobileBackupPosition.x - initialMobileBackupPosition === 0 ||
+        currentMobileBackupPosition.y - initialMobileBackupPosition.y === 0
+      )
+    ) {
+      currentPosition = currentMobileBackupPosition;
+      initialPosition = initialMobileBackupPosition;
     } else {
       currentPosition = currentMousePosition;
       initialPosition = initialMousePosition;
