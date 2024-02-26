@@ -10,6 +10,7 @@ body {
   margin: 0;
   background-color: #0c0d13;
   font-family: "Raleway", sans-serif;
+  overflow: hidden;
 }
 
 button,
