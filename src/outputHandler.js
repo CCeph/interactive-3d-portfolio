@@ -170,9 +170,7 @@ function createRotateController(
         currentMobilePosition.x === null ||
         currentMobilePosition.y === null ||
         initialMobilePosition.x === null ||
-        initialMobilePosition.y === null ||
-        currentMobilePosition.x - initialMobilePosition === 0 ||
-        currentMobilePosition.y - initialMobilePosition.y === 0
+        initialMobilePosition.y === null
       )
     ) {
       currentPosition = currentMobilePosition;
@@ -182,9 +180,7 @@ function createRotateController(
         currentMobileBackupPosition.x === null ||
         currentMobileBackupPosition.y === null ||
         initialMobileBackupPosition.x === null ||
-        initialMobileBackupPosition.y === null ||
-        currentMobileBackupPosition.x - initialMobileBackupPosition === 0 ||
-        currentMobileBackupPosition.y - initialMobileBackupPosition.y === 0
+        initialMobileBackupPosition.y === null
       )
     ) {
       currentPosition = currentMobileBackupPosition;
