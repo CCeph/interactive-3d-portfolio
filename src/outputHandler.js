@@ -1,5 +1,7 @@
 import triggerReflowOnElement from "./commonUtils";
 
+alert("Alerts will go here");
+
 function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
