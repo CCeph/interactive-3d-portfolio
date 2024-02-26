@@ -62,10 +62,17 @@ function createRotateController(
 ) {
   let dragging = false;
   let initialPosition = {};
+  let initialMousePosition = {};
+  let initialMobilePosition = {};
   let initialRotation = {};
 
   function isAndroid() {
-    if ((navigator.userAgent || window.opera).match(/Android/i)) {
+    if (
+      (navigator.userAgent || window.opera).match(/Android/i) ||
+      (navigator.userAgent || window.opera).match(/iPhone/i) ||
+      (navigator.userAgent || window.opera).match(/iPad/i) ||
+      (navigator.userAgent || window.opera).match(/chromeOS/i)
+    ) {
       return true;
     }
     return false;
@@ -83,17 +90,24 @@ function createRotateController(
 
   function initDragRotate(e) {
     dragging = true;
-    if (isAndroid()) {
-      initialPosition = {
+
+    initialMousePosition = {
+      x: e.pageX,
+      y: e.pageY,
+    };
+
+    try {
+      initialMobilePosition = {
         x: e.targetTouches[0].pageX,
         y: e.targetTouches[0].pageY,
       };
-    } else {
-      initialPosition = {
-        x: e.pageX,
-        y: e.pageY,
+    } catch (error) {
+      initialMobilePosition = {
+        x: null,
+        y: null,
       };
     }
+
     initialRotation = getInitialBoxRotation();
   }
 
@@ -102,18 +116,42 @@ function createRotateController(
       return;
     }
     let currentPosition = {};
+    let currentMousePosition = {};
+    let currentMobilePosition = {};
 
-    if (isAndroid()) {
-      currentPosition = {
+    currentMousePosition = {
+      x: e.pageX,
+      y: e.pageY,
+    };
+
+    try {
+      currentMobilePosition = {
         x: e.targetTouches[0].pageX,
         y: e.targetTouches[0].pageY,
       };
-    } else {
-      currentPosition = {
-        x: e.pageX,
-        y: e.pageY,
+    } catch (error) {
+      currentMobilePosition = {
+        x: null,
+        y: null,
       };
     }
+
+    // Checks if mobile or mouse input is being used, then sets the data accordingly.
+    if (
+      !(
+        currentMobilePosition.x === null ||
+        currentMobilePosition.y === null ||
+        initialMobilePosition.x === null ||
+        initialMobilePosition.y === null
+      )
+    ) {
+      currentPosition = currentMobilePosition;
+      initialPosition = initialMobilePosition;
+    } else {
+      currentPosition = currentMousePosition;
+      initialPosition = initialMousePosition;
+    }
+
     const delta = {
       x: ((currentPosition.x - initialPosition.x) / window.innerWidth) * 360,
       y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
