@@ -61,8 +61,10 @@ function createRotateController(
   cssRotYVarName
 ) {
   let dragging = false;
-  let initialPosition = {};
+  let touchDragging = false;
+
   let initialMousePosition = {};
+  let initialPosition = {};
   let initialMobilePosition = {};
   let initialMobileBackupPosition = {};
   let initialRotation = {};
@@ -80,17 +82,16 @@ function createRotateController(
   function initDragRotate(e) {
     dragging = true;
 
-    try {
-      initialMousePosition = {
-        x: e.pageX,
-        y: e.pageY,
-      };
-    } catch (error) {
-      initialMousePosition = {
-        x: null,
-        y: null,
-      };
-    }
+    initialMousePosition = {
+      x: e.pageX,
+      y: e.pageY,
+    };
+
+    initialRotation = getInitialBoxRotation();
+  }
+
+  function initTouchDragRotate(e) {
+    touchDragging = true;
 
     try {
       initialMobilePosition = {
@@ -123,22 +124,44 @@ function createRotateController(
     if (!dragging) {
       return;
     }
+    const currentPosition = {
+      x: e.pageX,
+      y: e.pageY,
+    };
+
+    const delta = {
+      x:
+        ((currentPosition.x - initialMousePosition.x) / window.innerWidth) *
+        360,
+      y:
+        ((initialMousePosition.y - currentPosition.y) / window.innerHeight) *
+        360,
+    };
+
+    const rootElement = root;
+    rootElement.style.setProperty(
+      cssRotXVarName,
+      `${delta.y + initialRotation.rotX}deg`
+    );
+    rootElement.style.setProperty(
+      cssRotYVarName,
+      `${delta.x + initialRotation.rotY}deg`
+    );
+
+    let rotateParam = "";
+    rotateParam += ` rotateX(${delta.y + initialRotation.rotX}deg)`;
+    rotateParam += ` rotateY(${delta.x + initialRotation.rotY}deg)`;
+    const cubeElement = cube;
+    cubeElement.style.transform = rotateParam;
+  }
+
+  function touchDragRotate(e) {
+    if (!touchDragging) {
+      return;
+    }
     let currentPosition = {};
-    let currentMousePosition = {};
     let currentMobilePosition = {};
     let currentMobileBackupPosition = {};
-
-    try {
-      currentMousePosition = {
-        x: e.pageX,
-        y: e.pageY,
-      };
-    } catch (error) {
-      currentMousePosition = {
-        x: null,
-        y: null,
-      };
-    }
 
     try {
       currentMobilePosition = {
@@ -175,19 +198,9 @@ function createRotateController(
     ) {
       currentPosition = currentMobilePosition;
       initialPosition = initialMobilePosition;
-    } else if (
-      !(
-        currentMobileBackupPosition.x === null ||
-        currentMobileBackupPosition.y === null ||
-        initialMobileBackupPosition.x === null ||
-        initialMobileBackupPosition.y === null
-      )
-    ) {
+    } else {
       currentPosition = currentMobileBackupPosition;
       initialPosition = initialMobileBackupPosition;
-    } else {
-      currentPosition = currentMousePosition;
-      initialPosition = initialMousePosition;
     }
 
     const delta = {
@@ -220,19 +233,30 @@ function createRotateController(
     dragging = false;
   }
 
+  function endTouchDragRotate() {
+    if (!touchDragging) {
+      return;
+    }
+
+    touchDragging = false;
+  }
+
   container.addEventListener("mousedown", initDragRotate);
-  container.addEventListener("touchstart", initDragRotate);
+  container.addEventListener("touchstart", initTouchDragRotate);
 
   container.addEventListener("mousemove", dragRotate);
-  container.addEventListener("touchmove", dragRotate);
+  container.addEventListener("touchmove", touchDragRotate);
 
   container.addEventListener("mouseup", endDragRotate);
-  container.addEventListener("touchend", endDragRotate);
+  container.addEventListener("touchend", endTouchDragRotate);
 
   return {
     initDragRotate,
+    initTouchDragRotate,
     dragRotate,
+    touchDragRotate,
     endDragRotate,
+    endTouchDragRotate,
   };
 }
 
