@@ -66,18 +66,6 @@ function createRotateController(
   let initialMobilePosition = {};
   let initialRotation = {};
 
-  function isAndroid() {
-    if (
-      (navigator.userAgent || window.opera).match(/Android/i) ||
-      (navigator.userAgent || window.opera).match(/iPhone/i) ||
-      (navigator.userAgent || window.opera).match(/iPad/i) ||
-      (navigator.userAgent || window.opera).match(/chromeOS/i)
-    ) {
-      return true;
-    }
-    return false;
-  }
-
   function getInitialBoxRotation() {
     const rootElement = root;
     const rootStyles = getComputedStyle(rootElement);
