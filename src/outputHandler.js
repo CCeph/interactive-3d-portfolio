@@ -79,10 +79,17 @@ function createRotateController(
   function initDragRotate(e) {
     dragging = true;
 
-    initialMousePosition = {
-      x: e.pageX,
-      y: e.pageY,
-    };
+    try {
+      initialMousePosition = {
+        x: e.pageX,
+        y: e.pageY,
+      };
+    } catch (error) {
+      initialMousePosition = {
+        x: null,
+        y: null,
+      };
+    }
 
     try {
       initialMobilePosition = {
@@ -107,10 +114,17 @@ function createRotateController(
     let currentMousePosition = {};
     let currentMobilePosition = {};
 
-    currentMousePosition = {
-      x: e.pageX,
-      y: e.pageY,
-    };
+    try {
+      currentMousePosition = {
+        x: e.pageX,
+        y: e.pageY,
+      };
+    } catch (error) {
+      currentMousePosition = {
+        x: null,
+        y: null,
+      };
+    }
 
     try {
       currentMobilePosition = {
