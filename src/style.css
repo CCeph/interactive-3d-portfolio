@@ -659,7 +659,7 @@ button:active {
 }
 
 .page .home-button {
-  margin: 30px auto;
+  margin: 30px auto 125px auto;
 }
 
 .contact > .flex-wrapper {
