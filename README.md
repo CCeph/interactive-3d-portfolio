@@ -6,16 +6,12 @@ This website couples as my portfolio and my attempt at a new style of navigation
 
 ## Shortcomings of Design
 
-1. Mobile support is not great. It can be quite laggy, and some taps or drags register in unintended ways.
-2. I have not coded keyboard support yet.
-3. I have not coded screen reader support yet.
-4. To prevent undesired clicks on faces when moving the cube, I had to use double click as the event to access one of the cube's faces. Double click is a rare and unfamiliar input method on websites.
-
-## To-Do List
-
-1. Prevent reloading the page on mobile when dragging the cube.
-2. Figure out why the cube does not work on iOS and chromeOS.
+1. Mobile support is not great. It can be quite laggy, and some taps or drags register in unintended ways (for example, dragging down might refresh the page on some phones).
+2. There is no keyboard or screen reader support as of yet.
+3. To prevent undesired clicks on faces when moving the cube, I had to use double click as the event to access one of the cube's faces. Double click is a rare and unfamiliar input method on websites.
 
 ## Compatibility
 
-The website was tested on Chrome on PC. It is functional on Android, but there may be some bugs. It is not working on iOS or chromeOS.
+The website was tested on Chrome on PC and Android where it works well.
+
+iOS support is unpredictable. It seems to work on newer iPhones, but does not work on older ones (mainly tested with iPhone 12). From my testing, the issue seems to be related to animations. Before any animation plays, the box can be moved around. Once any animation is played, the box can no longer be moved. Also, the touchmove event is used in this application, which is not supported on Opera or Safari according to MDN.
