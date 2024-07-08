@@ -15,3 +15,5 @@ This website couples as my portfolio and my attempt at a new style of navigation
 The website was tested on Chrome on PC and Android where it works well.
 
 iOS support is unpredictable. It seems to work on newer iPhones, but does not work on older ones (mainly tested with iPhone 12). From my testing, the issue seems to be related to animations. Before any animation plays, the box can be moved around. Once any animation is played, the box can no longer be moved. Also, the touchmove event is used in this application, which is not supported on Opera or Safari according to MDN.
+
+This project is tested with BrowserStack.
